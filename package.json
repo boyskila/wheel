@@ -1,0 +1,19 @@
+{
+  "name": "webpacktest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack-dev-server --progress",
+    "start": "webpack --watch"
+  },
+  "author": "boyskila",
+  "license": "MIT",
+  "dependencies": {
+    "webpack": "^3.5.5"
+  },
+  "devDependencies": {
+    "open-browser-webpack-plugin": "0.0.5",
+    "webpack-dev-server": "^2.7.1"
+  }
+}

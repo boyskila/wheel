@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Spin a Wheel</title>
+	<style type="text/css">
+	    text {
+	        font-size:20px;
+	    }
+	    #wheel-container{
+	        width:500px;
+	        height:500px;
+			margin: 30% auto;
+			position: relative;
+	    }
+		#spin-btn {
+			border-radius: 50%;
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			top: 50%;
+			left: 40%;
+		}
+	</style>
+</head>
+<body>
+    <div id="wheel-container">
+		<svg width="500" height="600" class="spin-a-wheel">
+  			<g transform="translate(250, 300)"></g>
+  		</svg>
+		<img src="./spin.jpg" alt="Spin that wheel" id="spin-btn">
+    </div>
+
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script>
+
+    <script type="text/javascript">
+
+        var data = [
+            {"label":"Iphone", "color":"red"},
+            {"label":"Ferrari", "color":"blue"},
+            {"label":"Cash", "color":"pink"},
+            {"label":"Gold", "color":"orange"},
+            {"label":"Silver", "color":"green"},
+            {"label":"Nothing", "color":"purple"}
+        ];
+
+		var WHEEL_RADIUS = 250;
+
+		var svg = d3.select('svg').data([data]);
+        var group = svg.select('g').append("g");
+
+		//create pie layout with sectors count based on data array length
+        var pie = d3.layout.pie().value(function(){
+			return 1;
+		});
+
+		// declare an arc generator function
+		var arcGenerator = d3.svg.arc().innerRadius(40).outerRadius(WHEEL_RADIUS);
+
+        // select paths, use arc generator to draw
+        var arcs = group.selectAll(".prize-sector").data(pie).enter().append("g").attr('class', 'prize-sector');
+
+        arcs.append("path").attr("d", generateSector).attr("fill", fillColor);
+
+        arcs.append("text").attr("transform", calculateTextPosition).attr("text-anchor", "end").text(getDataText);
+
+		// arcs.append("text")
+		// 	.attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) - 100 + ")"; })
+		// 	.text(function(d) { return d.data.label;})
+
+		function getDataText(drawData, index) {
+        	return data[index].label;
+    	}
+
+		function calculateTextPosition(drawData){
+        	var textAngle = (drawData.startAngle + drawData.endAngle) / 2;
+        	return `rotate(${textAngle * 180 / Math.PI - 90}) translate(${WHEEL_RADIUS - 50})`;
+    	}
+
+		function fillColor(drawData){
+			return drawData.data.color;
+		}
+
+		function generateSector(drawData) {
+			return arcGenerator(drawData);
+		}
+
+		document.getElementById('spin-btn')
+				.addEventListener('click', function() {
+					anime({
+						targets: '#wheel-container .spin-a-wheel',
+						rotate: '7turn',
+						easing: 'linear',
+						duration: 6000
+					});
+				})
+
+    </script>
+
+</body>
+</html>
