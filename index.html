@@ -21,35 +21,54 @@
 			top: 50%;
 			left: 40%;
 		}
+
+
+
 	</style>
 </head>
 <body>
     <div id="wheel-container">
-		<svg width="500" height="600" class="spin-a-wheel">
-  			<g transform="translate(250, 300)"></g>
+		<select id="select">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+		</select>
+		<svg width="500" height="600" class="spin-a-wheel" id="test">
+  			<g id="main" ></g>
   		</svg>
 		<img src="./spin.jpg" alt="Spin that wheel" id="spin-btn">
+		<button id="btn" name="button">BUTTTON</button>
     </div>
 
     <script src="https://d3js.org/d3.v3.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.js"></script>
+	<script src="./node_modules/animejs/anime.js"></script>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" charset="utf-8"></script>
     <script type="text/javascript">
 
         var data = [
-            {"label":"Iphone", "color":"red"},
-            {"label":"Ferrari", "color":"blue"},
-            {"label":"Cash", "color":"pink"},
-            {"label":"Gold", "color":"orange"},
-            {"label":"Silver", "color":"green"},
-            {"label":"Nothing", "color":"purple"}
+            {"label":"Iphone", "color":"red", index: 1},
+            {"label":"Ferrari", "color":"blue", index: 3},
+			{"label":"Gold", "color":"green", index: 2},
+			{"label":"Silver", "color":"pink", index: 4},
+
+
         ];
 
+		data.sort(function (a,b) {
+			return d3.ascending(a.index, b.index);
+		})
+		var prizesSectors = {};
+
 		var WHEEL_RADIUS = 250;
+		var angle = 0;
 
 		var svg = d3.select('svg').data([data]);
         var group = svg.select('g').append("g");
-
+		d3.select('#main').attr('transform', "translate(250, 300) rotate(" + (data.length === 2 ? 0 : -30) + ")")
+console.log(svg);
+// svg.attr('transform', 'translate(250, )')
 		//create pie layout with sectors count based on data array length
         var pie = d3.layout.pie().value(function(){
 			return 1;
@@ -63,11 +82,28 @@
 
         arcs.append("path").attr("d", generateSector).attr("fill", fillColor);
 
-        arcs.append("text").attr("transform", calculateTextPosition).attr("text-anchor", "end").text(getDataText);
+        // arcs.append("text").attr("transform", calculateTextPosition).attr("text-anchor", "end").text(getDataText);
+		arcs.append('image').attr("transform", function(d) {
+			var data = d.data;
+			// prizesSectors[(data.label + data.index)] = {
+			// 	startAngle: d.startAngle,
+			// 	endAngle: d.endAngle
+			// }
+			console.log(d);
+                    var pos = arcGenerator.centroid(d);
+                    pos[0] -= 25;
+                    pos[1] -= 25;
+					angle  += 75;
+					angle = angle > 75 ? angle - 15 : angle;
 
-		// arcs.append("text")
-		// 	.attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) - 100 + ")"; })
-		// 	.text(function(d) { return d.data.label;})
+					// `translate( ${pos} ) rotate( ${0}, 50, 50 )`
+                    return 	`translate( ${pos} ) rotate( ${angle}, 25, 25 )`;
+                }).attr('xlink:href', 'https://png.icons8.com/search');
+
+		// arcs.append("image")
+		// 	.attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d)+ ")"; })
+		// 	.attr('xlink:href', 'https://png.icons8.com/search')
+			// .text(function(d) { return d.data.label;})
 
 		function getDataText(drawData, index) {
         	return data[index].label;
@@ -86,17 +122,54 @@
 			return arcGenerator(drawData);
 		}
 
-		document.getElementById('spin-btn')
-				.addEventListener('click', function() {
-					anime({
-						targets: '#wheel-container .spin-a-wheel',
-						rotate: '7turn',
-						easing: 'linear',
-						duration: 6000
-					});
-				})
+		var restartAnim ;
+		$('#spin-btn').click(function() {
+			$('#test').css('transform', '');
+			var tl = anime.timeline();
+			restartAnim = anime({
+				targets: '.spin-a-wheel',
+				rotate: 2880,//rotate 5 times and add more degrees for the winning prise
+				easing: 'linear',
+				duration: 2500
+			})
+		})
 
+		$('#btn').click(function() {
+			var numberPattern = /\d+/g;
+			var currentDegree = Number(document.getElementById('test').style.transform.match( numberPattern )[0]);
+			restartAnim.pause();
+			var sectorSize = 360 / data.length;
+			var opt = $('select').val();
+			anime({
+				targets: '.spin-a-wheel',
+				rotate: function () {
+					var leftToEnd = 2880 - currentDegree;
+					return currentDegree + 2880 + leftToEnd - opt * sectorSize - 30;
+				},//rotate 5 times and add more degrees for the winning prise
+				easing: 'easeOutQuad',
+				// loop: true
+					duration: 4000 + 3 * 1000
+			})
+		});
+						// 	var style = document.createElement('style');
+						// 	style.type = 'text/css';
+						// 	var keyFrames = `
+						// 	@keyframes spin {
+						// 		from {
+						// 			transform: rotate(0deg);
+						// 		}
+						//
+						// 		100% {
+						// 	        transform: rotate(3600deg);
+						// 	    }
+						// 	}
+						// `;
+						// style.innerHTML = keyFrames.replace(/A_DYNAMIC_VALUE/g, "deg");
+						// document.getElementsByTagName('head')[0].appendChild(style);
+
+						// var elm = document.getElementById('test');
+						// var newone = elm.cloneNode(true);
+						// elm.parentNode.replaceChild(newone, elm);
     </script>
-
 </body>
 </html>
