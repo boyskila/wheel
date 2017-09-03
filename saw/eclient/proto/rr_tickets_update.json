@@ -1,0 +1,18 @@
+{
+  "totalTickets": 6,
+  "tickets":[
+    {
+      "templateCode": 11111,
+      "totalCount": 4,
+      "nearestExpirationDate": 1435736000000,
+      "nearestExpirationCount": 1
+    },
+    {
+      "templateCode": 22222,
+      "totalCount": 2,
+      "nearestExpirationDate": 1445566000000,
+      "nearestExpirationCount": 1
+    }
+  ],
+  "classId":60243
+}

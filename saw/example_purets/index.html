@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Spin A Wheel Scene</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../js/mustache.min.js"></script>
+    <script src="../../../bundles/SaWSceneRender.bundle.js"></script>
+    <script>
+        var saWSceneRender;
+        $(window).on('load', function () {
+            saWSceneRender = new SaWSceneRender.SaWSceneRender();
+            saWSceneRender.onShow();
+        });
+    </script>
+    <script id="SaWPoolGrid" type="text/template">
+        <div>
+            <table id="sawGrid" class="saw-grid">
+                {{#pools}} {{#hasTickets}}
+                <tr>
+                    <td class="td-center"><img class="saw-grid-row-cell-icon" src="{{_icon}}" /></td>
+                    <td class="td-left">
+                        <div class="saw-grid-row-cell-info">{{_name}}</div>
+                        <div class="saw-grid-row-cell-info">{{formatFreeSpins}}</div>
+                        <div class="saw-grid-row-cell-info"><a href="{{_termsAndConditionsUrl}}" target="_blank">{{_termsAndConditionsDescription}}</a></div>
+                        <div class="saw-grid-row-cell-info">{{formatExpirationDate}}</div>
+                    </td>
+                    <td class="td-center"><button class="saw-grid-row-cell-button" onclick="saWSceneRender.onOpenPool({{_code}})">OPEN POOL</button></td>
+                </tr>
+                {{/hasTickets}} {{/pools}}
+            </table>
+            <div id="totalTicketsCount" class="saw-grid-row-total-count">Total tickets count: {{totalTicketsCount}}</div>
+        </div>
+    </script>
+    <script id="SaWSpinsGrid" type="text/template">
+        <div>
+            <div class="SaWDialogTitle">{{title}}</div>
+            <table class="saw-grid">
+                <tr>
+                    <th>Sector Index</th>
+                    <th>Icon</th>
+                    <th>Color</th>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Value</th>
+                </tr>
+                {{#sectors}}
+                <tr>
+                    <td class="td-center">{{_index}}</td>
+                    <td class="td-center">
+                        <img class="saw-dialog-row-cell-icon" src={{_spinAWheelPrize._icon}} />
+                    </td>
+                    <td class="td-center">
+                        <div class="saw-dialog-row-cell-color" style="background-color: {{_spinAWheelSector._sectorColor}}" />
+                    </td>
+                    <td class="td-left">
+                        <div class="saw-grid-row-cell-info">{{_spinAWheelPrize._code}}</div>
+                    </td>
+                    <td class="td-left">
+                        <div class="saw-grid-row-cell-info">{{_spinAWheelPrize._name}}</div>
+                    </td>
+                    <td class="td-left">
+                        <div class="saw-grid-row-cell-info">{{formatRandomRewardPrize}}</div>
+                    </td>
+                    <td class="td-left">
+                        <div class="saw-grid-row-cell-info">{{_spinAWheelPrize._prizeValue}}</div>
+                    </td>
+                </tr>
+                {{/sectors}}
+                <tr>
+                    <td colSpan="7">
+                        <button class="saw-dialog-draw-button" onclick="saWSceneRender.onStartSpin({{templateCode}})">START SPIN</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </script>
+</head>
+
+<body bgcolor="white">
+    <div id="SaWPoolGridContainer"></div>
+    <div id="SaWSpinsDialog" class="SaWDialog">
+        <div class="SaWDialogContent">
+            <span id="SaWSpinsDialogClose" class="SaWDialogClose">&times;</span>
+            <div id="SaWSpinsDialogContent" class="SaWDialogContent"></div>
+        </div>
+    </div>
+    <div id="SaWAnimationDialog" class="SaWDialog">
+        <div class="SaWDialogContent">
+            <div id="SaWAnimationDialogTitle" class="SaWDialogTitle"></div>
+            <div id="SaWAnimationDialogTimer" class="SaWDialogDescription"></div>
+        </div>
+    </div>
+    <div id="SaWPrizeDialog" class="SaWDialog">
+        <div class="SaWDialogContent">
+            <div id="SaWPrizeDialogTitle" class="SaWDialogTitle">YOU WON!</div>
+            <div id="SaWPrizeDialogDescription" class="SaWDialogDescription"></div>
+            <div>
+                <img id="SaWPrizeDialogIcon" class="saw-grid-row-cell-icon SaWDialogPrizeIcon" src="" />
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

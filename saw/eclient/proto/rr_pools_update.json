@@ -1,0 +1,51 @@
+{
+  "pools": [
+    {
+      "code": 11111,
+      "templateName": "SaW template 1",
+      "displayName": "Updated spins",
+      "termsAndConditionsTxt": "Check what is Spin a wheel",
+      "termsAndConditionsUrl": "http://www.google.com",
+      "designSettings": "{\"skinName\": \"Super skin\",\"sectorsCount\": 2,\"customIcon\": \"https://thumb1.shutterstock.com/display_pic_with_logo/883358/590802956/stock-vector-isolated-wheel-of-american-roulette-590802956.jpg\"}",
+      "rewards": [
+        {
+          "code": 10111,
+          "displayName": "Physical Prize",
+          "prizeType": 1,
+          "prizeValue": 30,
+          "designSettings":"{\"customIcon\": \"https://thumb1.shutterstock.com/display_pic_with_logo/883358/590802956/stock-vector-isolated-wheel-of-american-roulette-590802956.jpg\",\"sectors\": [{\"sectorColor\": \"#ffff00\", \"sectorIndex\": 1}]}"
+        },
+        {
+          "code": 10222,
+          "displayName": "Cash Prize",
+          "prizeType": 2,
+          "prizeValue": 40,
+          "designSettings": "{\"customIcon\": \"https://thumb1.shutterstock.com/display_pic_with_logo/883358/590802956/stock-vector-isolated-wheel-of-american-roulette-590802956.jpg\",\"sectors\": [{\"sectorColor\": \"#00ff00\", \"sectorIndex\": 2}]}"
+        }
+      ]
+    },
+    {
+      "code": 22222,
+      "templateName": "SaW template 2",
+      "displayName": "Updated Poor spins",
+      "designSettings": "{\"skinName\": \"Poor skin\",\"sectorsCount\": 4,\"customIcon\": \"https://thumb1.shutterstock.com/display_pic_with_logo/92336/273487253/stock-vector-vector-illustration-of-roulette-wheel-273487253.jpg\"}",
+      "rewards": [
+        {
+          "code": 20111,
+          "displayName": "Physical Prize",
+          "prizeType": 1,
+          "prizeValue": 60,
+          "designSettings": "{\"customIcon\": \"https://thumb1.shutterstock.com/display_pic_with_logo/92336/273487253/stock-vector-vector-illustration-of-roulette-wheel-273487253.jpg\",\"sectors\": [{\"sectorColor\": \"#ff0ff0\", \"sectorIndex\": 1},{\"sectorColor\": \"#0ff00f\", \"sectorIndex\": 3}]}"
+        },
+        {
+          "code": 20222,
+          "displayName": "Cash Prize",
+          "prizeType": 2,
+          "prizeValue": 30,
+          "designSettings": "{\"customIcon\": \"https://thumb1.shutterstock.com/display_pic_with_logo/92336/273487253/stock-vector-vector-illustration-of-roulette-wheel-273487253.jpg\",\"sectors\": [{\"sectorColor\": \"#ff0f00\", \"sectorIndex\": 2},{\"sectorColor\": \"#0fff00\", \"sectorIndex\": 4}]}"
+        }
+      ]
+    }
+  ],
+  "classId": 60241
+}

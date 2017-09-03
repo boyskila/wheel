@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Legacy Spin A Wheel Scene</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+ <img id="image" alt="">
+	<div class="container">
+	  <div class="layout">
+	    <div class="col col-main" role="main">
+			<div id="wheel-container">
+				<svg height="440"width="440" id="circle-svg" style="display:block;"></svg>
+				<div id="wheel-ring"></div>
+		        <div class="flare"></div>
+		        <div class="flare"></div>
+		        <div class="flare"></div>
+		        <div class="flare"></div>
+		        <div class="flare"></div>
+		        <div class="flare"></div>
+		        <div class="flare"></div>
+		        <div class="arrow-container">
+
+		        </div>
+		        <div class="pointer-container"></div>
+		        <div class="test">
+		            <!-- <svg width="440" height="440" class="spin-a-wheel" id="wheel">
+		                <g transform="translate(220, 220)" id="group"></g>
+		            </svg> -->
+					<img src="../saw-images-assets/shared/spin-btn-disabled.png" alt="Spin that wheel" id="spin-btn-disabled" >
+					<img src="../saw-images-assets/shared/spin-btn-click.png" alt="Spin that wheel" id="spin-btn" >
+		        </div>
+		        <div id="wheel-text">
+		            <span class="spins-count"></span>
+		            <span class="date"></span>
+		        </div>
+		    </div>
+		</div>
+	    </div>
+	    <div class="col col-complementary" role="complementary">
+	      <div class="sidebar"></div>
+	  	</div>
+	  </div>
+
+	</div>
+
+
+
+<div class="overlay">
+    <div id="winning-popup">
+        <h2></h2>
+        <a class="close" href="#">&times;</a>
+        <div id="prize-name"></div>
+        <img id="prize-icon" width="100" height="100" alt="image not available">
+    </div>
+
+<script src="../../../js/jquery-3.2.1.min.js"></script>
+<script src="../../../js/d3.min.js"></script>
+<script src="../../../bundles/Dictionary.bundle.js"></script>
+<script src="../../../bundles/NumberFormatter.bundle.js"></script>
+<script src="../../../bundles/DateTimeFormatter.bundle.js"></script>
+<script src="../../../bundles/PostMessageNetwork.bundle.js"></script>
+<script src="../../../js/anime.min.js"></script>
+
+<script src="../../../bundles/SawAPI.bundle.js"></script>
+<script src="./ui/formatters.js"></script>
+<script src="./ui/utils.js"></script>
+<script src="./ui/wheelBuilder.js"></script>
+<script src="./ui/sidebarBuilder.js"></script>
+<script src="./ui/animations.js"></script>
+<script src="LegacySaWRender.js"></script>
+<script src="LegacySaWComponents.js"></script>
+<script>
+    var legacySaWRender;
+    $(window).on('load', function () {
+        legacySaWRender = new LegacySaWRender();
+        legacySaWRender.onShow();
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+{
+  "pools":[
+    {
+      "code":11111,
+      "templateName":"SaW template 1",
+      "displayName":"Win up to 1,000 EUR",
+      "termsAndConditionsTxt":"Check what is Spin a wheel",
+      "termsAndConditionsUrl":"http://www.google.com",
+      "designSettings":"{\"skinName\":\"golden\",\"sectorsCount\":3,\"customIcon\":\"../saw-images-assets/golden/icon-golden.png\"}",
+      "rewards":[
+        {
+          "code":10111,
+          "displayName":"Physical Prize",
+          "prizeType":1,
+          "prizeValue":20,
+          "designSettings":"{\"customIcon\":\"../saw-images-assets/shared/icon-iphone.png\",\"sectors\":[{\"sectorColor\":\"#fec924\",\"sectorIndex\":1},{\"sectorColor\":\"#c75f00\",\"sectorIndex\":3}]}"
+        },
+        {
+          "code":10222,
+          "displayName":"Cash Prize",
+          "prizeType":2,
+          "prizeValue":30,
+          "designSettings":"{\"customIcon\":\"../saw-images-assets/shared/icon-cash.png\",\"sectors\":[{\"sectorColor\":\"#e28600\",\"sectorIndex\":2}]}"
+        }
+      ]
+    },
+    {
+      "code":22222,
+      "templateName":"SaW template 2",
+      "displayName":"Win up to 10,000 EUR",
+      "designSettings":"{\"skinName\":\"wooden\",\"sectorsCount\":6,\"customIcon\":\"../saw-images-assets/wooden/icon-wooden.png\"}",
+      "rewards":[
+        {
+          "code":20111,
+          "displayName":"Physical Prize",
+          "prizeType":1,
+          "prizeValue":20,
+          "designSettings":"{\"customIcon\":\"../saw-images-assets/shared/icon-iphone.png\",\"sectors\":[{\"sectorColor\":\"#ff0000\",\"sectorIndex\":1},{\"sectorColor\":\"#0000ff\",\"sectorIndex\":3},{\"sectorColor\":\"#0000ff\",\"sectorIndex\":5}]}"
+        },
+        {
+          "code":20222,
+          "displayName":"Cash Prize",
+          "prizeType":2,
+          "prizeValue":30,
+          "designSettings":"{\"customIcon\":\"../saw-images-assets/shared/icon-cash.png\",\"sectors\":[{\"sectorColor\":\"#ffff00\",\"sectorIndex\":2},{\"sectorColor\":\"#ffff00\",\"sectorIndex\":4},{\"sectorColor\":\"#ffff00\",\"sectorIndex\":6}]}"
+        }
+      ]
+    },
+    {
+      "code":33333,
+      "templateName":"SaW template 3",
+      "displayName":"Win up to 2,500 EUR",
+      "termsAndConditionsTxt":"Terms & Conditions",
+      "termsAndConditionsUrl":"http://www.google.com",
+      "designSettings":"{\"skinName\":\"rainbow\",\"sectorsCount\":4,\"customIcon\":\"../saw-images-assets/rainbow/icon-rainbow.png\"}",
+      "rewards":[
+        {
+          "code":30111,
+          "displayName":"Physical Prize",
+          "prizeType":1,
+          "prizeValue":30,
+          "designSettings":"{\"customIcon\":\"../saw-images-assets/shared/icon-iphone.png\",\"sectors\":[{\"sectorColor\":\"#4aab04\",\"sectorIndex\":1},{\"sectorColor\":\"#0065b7\",\"sectorIndex\":3},{\"sectorColor\":\"#483f98\",\"sectorIndex\":5}]}"
+        },
+        {
+          "code":30222,
+          "displayName":"Cash Prize",
+          "prizeType":2,
+          "prizeValue":10,
+          "designSettings":"{\"customIcon\":\"../saw-images-assets/shared/icon-cash.png\",\"sectors\":[{\"sectorColor\":\"#ee621e\",\"sectorIndex\":2},{\"sectorColor\":\"#d72f2f\",\"sectorIndex\":4},{\"sectorColor\":\"#923e96\",\"sectorIndex\":6}]}"
+        }
+      ]
+    }
+  ],
+  "classId":60241
+}

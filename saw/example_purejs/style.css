@@ -1,0 +1,140 @@
+/* Layout: */
+
+.col-main {
+  flex: 3;
+}
+
+.col-complementary {
+  flex: 1;
+}
+svg {
+	margin-left: 200px;
+    margin-top: 80px;
+}
+#wheel-ring {
+	position: absolute;
+	left: 158px;
+	top: 38px;
+}
+
+/* Responsive: */
+
+@media only screen and (min-width: 1024px) {
+  .layout {
+    display: flex;
+  }
+   .pool-container {
+	  display: block;
+  }
+}
+.sidebar {
+	display: table;
+	width: 200px;
+	position: absolute;
+}
+.pool-container {
+	display: table-cell;
+}
+
+/* etc */
+
+body {
+  margin: 1.5em;
+}
+
+.container {
+  /*max-width: 60em;*/
+  /*margin-right: auto;
+  margin-left: auto;*/
+  min-height: 520px;
+}
+
+/*.col {
+  padding: 1em;
+  margin: 0 2px 2px 0;
+}*/
+#wheel-container {
+    /*width: 850px;*/
+    height: 590px;
+    position: absolute;
+    border-radius: 5%;
+    float: left;
+}
+#spin-btn, #spin-btn-disabled {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 230px;
+    left: 350px;
+}
+.test {
+    padding-top: 81px;
+    padding-left: 205px;
+}
+
+.arrow-container {
+    position: absolute;
+    transform: rotate(4deg);
+    top: 70px;
+    left: 500px;
+    z-index: 10;
+}
+
+.pointer-container {
+    position: absolute;
+    left: 600px;
+    top: 260px;
+    z-index: 10;
+}
+
+.flare {
+    position: absolute;
+    width: 76px;
+    height: 76px;
+    background: url("./images/small-flare.png") no-repeat;
+    opacity: 0.7;
+    top: 67px;
+    left: 293px;
+    z-index: 4;
+}
+
+.flare:nth-of-type(2) {
+    top: 70px;
+    left: 477px;
+}
+
+.flare:nth-of-type(3) {
+    top: 213px;
+    left: 590px;
+}
+
+.flare:nth-of-type(4) {
+    top: 393px;
+    left: 550px;
+}
+
+.flare:nth-of-type(5) {
+    top: 467px;
+    left: 385px;
+}
+
+.flare:nth-of-type(6) {
+    top: 393px;
+    left: 220px;
+}
+
+.flare:nth-of-type(7) {
+    top: 208px;
+    left: 178px;
+}
+
+#wheel-text {
+    color:#fff;
+    padding-left:25%;
+    /*padding-top: 10px;*/
+}
+#wheel-text span:last-child {
+    border-left: 2px solid #fff;
+    padding-left:5px;
+}
