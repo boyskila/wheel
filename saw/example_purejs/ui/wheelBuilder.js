@@ -77,33 +77,25 @@ function WheelBuilder(prizes) {
 
 	function drawCircle() {
         sectors = calculateSectors(prizes);
-		console.log(sectors);
         var i = 0;
         var deg = 0;
         var sectorsString = ''
+		var iconOffset = sectors.length <= 3 ? 20 : 0;
         sectors.map( function(sector) {
-
-            var dist = Math.sqrt(sector.X * 2 + sector.Y * 2);
-            var midX = Math.sqrt(sector.X);
-            var midY = Math.sqrt(sector.Y);
-
-
             sectorsString += `
                 <path d="M${halfOfRadius} ${halfOfRadius} L${halfOfRadius } 0 A${halfOfRadius} ${halfOfRadius} 1 0 1 ${sector.X} ${sector.Y} Z" fill="${sector.color}" transform="rotate(${sector.rotation}, ${halfOfRadius}, ${halfOfRadius})"></path>
                 <defs>
-                    <path id="w${++i}" d="M${halfOfRadius} ${halfOfRadius} L${halfOfRadius} 0" stroke"red" transform="rotate(${sector.rotation + 11}, ${halfOfRadius}, ${halfOfRadius})"></path>
-
-
+                    <path id="w${++i}" d="M${halfOfRadius} ${halfOfRadius} L${halfOfRadius} 0" stroke"red" transform="rotate(${sector.rotation + 40}, ${halfOfRadius}, ${halfOfRadius})"></path>
                 </defs>
-                <text style="font-size:15px">
+                <text style="font-size:20px">
                     <textPath xlink:href="#w${i}" startOffset="60%" text-anchor="middle">${sector.label}</textPath>
                 </text>
-                <image xlink:href='${sector.icon}' x="280" y="75" preserveAspectRatio="none" transform="rotate(${sector.rotation + 15}, ${halfOfRadius}, ${halfOfRadius})"></image>
+                <image xlink:href='${sector.icon}' x="280" y="75" preserveAspectRatio="none" transform="rotate(${sector.rotation + iconOffset}, ${halfOfRadius}, ${halfOfRadius})"></image>
             `
         })
         return sectorsString;
     }
     var svg = document.getElementById('circle-svg');
-	console.log('AAAAAAAAa');
+
     svg.innerHTML = drawCircle();
 }

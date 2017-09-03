@@ -28,6 +28,6 @@ var Utils = {
         }
     },
     isWheelRunning: function () {
-        return $('#wheel').attr('data-status') == 'running';
+        return $('#circle-svg').attr('data-status') == 'running';
     }
 }

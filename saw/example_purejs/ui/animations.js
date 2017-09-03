@@ -15,7 +15,7 @@ var animations = {
             duration: 7000,
             complete: function () {
                 onAnimationEnd();
-                $('#wheel').removeAttr('data-status');
+                $('#circle-svg').removeAttr('data-status');
                 $('#prize-name').text(prize._name);
                 $('.overlay h2').text('You Won');
                 $('#prize-icon').attr('src', prize._icon);
@@ -64,7 +64,7 @@ var animations = {
             duration: 600,
             direction: 'alternate',
             easing: "linear",
-            loop: true,
+            //loop: true,
         });
         return animation;
     },

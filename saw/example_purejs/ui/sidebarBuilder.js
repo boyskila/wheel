@@ -30,7 +30,7 @@ function SidebarBuilder(pools) {
                 $(this).css('opacity', '.9');
             }
 			$(this).css('visibility', 'hidden')
-            $('#wheel').attr('data-status', 'running')
+            $('#circle-svg').attr('data-status', 'running')
             $('#click-to-spin-arrow').css('visibility', 'hidden');
 
             arrowAnimation.pause();
@@ -73,10 +73,8 @@ function SidebarBuilder(pools) {
 				$('#wheel-ring').empty().append(
 					`<img src="../saw-images-assets/${skinName}/${skinName}-wheel.png"></img>`
 				)
-                $('#image').attr({
-                    'src': `../saw-images-assets/${skinName}/${skinName}-bg.jpg`,
-					'width': '100%',
-					'height': $( window ).height(),
+                $('#bg-image').attr({
+                    'src': `../saw-images-assets/${skinName}/${skinName}-bg.jpg`
                 }).css('position', 'absolute');
 
                 legacySaWRender.onOpenPool(pool._code);

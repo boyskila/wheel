@@ -6,21 +6,21 @@
       "displayName": "Updated spins",
       "termsAndConditionsTxt": "Check what is Spin a wheel",
       "termsAndConditionsUrl": "http://www.google.com",
-      "designSettings": "{\"skinName\": \"Super skin\",\"sectorsCount\": 2,\"customIcon\": \"https://thumb1.shutterstock.com/display_pic_with_logo/883358/590802956/stock-vector-isolated-wheel-of-american-roulette-590802956.jpg\"}",
+      "designSettings": "{\"skinName\": \"golden\",\"sectorsCount\": 2,\"customIcon\": \"../saw-images-assets/golden/icon-golden.png\"}",
       "rewards": [
         {
           "code": 10111,
           "displayName": "Physical Prize",
           "prizeType": 1,
           "prizeValue": 30,
-          "designSettings":"{\"customIcon\": \"https://thumb1.shutterstock.com/display_pic_with_logo/883358/590802956/stock-vector-isolated-wheel-of-american-roulette-590802956.jpg\",\"sectors\": [{\"sectorColor\": \"#ffff00\", \"sectorIndex\": 1}]}"
+          "designSettings":"{\"customIcon\": \"../saw-images-assets/shared/icon-iphone.png\",\"sectors\": [{\"sectorColor\": \"#ffff00\", \"sectorIndex\": 1}]}"
         },
         {
           "code": 10222,
           "displayName": "Cash Prize",
           "prizeType": 2,
           "prizeValue": 40,
-          "designSettings": "{\"customIcon\": \"https://thumb1.shutterstock.com/display_pic_with_logo/883358/590802956/stock-vector-isolated-wheel-of-american-roulette-590802956.jpg\",\"sectors\": [{\"sectorColor\": \"#00ff00\", \"sectorIndex\": 2}]}"
+          "designSettings": "{\"customIcon\": \"../saw-images-assets/shared/icon-cash.png\",\"sectors\": [{\"sectorColor\": \"#00ff00\", \"sectorIndex\": 2}]}"
         }
       ]
     },
@@ -28,21 +28,21 @@
       "code": 22222,
       "templateName": "SaW template 2",
       "displayName": "Updated Poor spins",
-      "designSettings": "{\"skinName\": \"Poor skin\",\"sectorsCount\": 4,\"customIcon\": \"https://thumb1.shutterstock.com/display_pic_with_logo/92336/273487253/stock-vector-vector-illustration-of-roulette-wheel-273487253.jpg\"}",
+      "designSettings": "{\"skinName\": \"wooden\",\"sectorsCount\": 4,\"customIcon\": \"../saw-images-assets/wooden/icon-wooden.png\"}",
       "rewards": [
         {
           "code": 20111,
           "displayName": "Physical Prize",
           "prizeType": 1,
           "prizeValue": 60,
-          "designSettings": "{\"customIcon\": \"https://thumb1.shutterstock.com/display_pic_with_logo/92336/273487253/stock-vector-vector-illustration-of-roulette-wheel-273487253.jpg\",\"sectors\": [{\"sectorColor\": \"#ff0ff0\", \"sectorIndex\": 1},{\"sectorColor\": \"#0ff00f\", \"sectorIndex\": 3}]}"
+          "designSettings": "{\"customIcon\": \"../saw-images-assets/shared/icon-iphone.png\",\"sectors\": [{\"sectorColor\": \"#ff0ff0\", \"sectorIndex\": 1},{\"sectorColor\": \"#0ff00f\", \"sectorIndex\": 3}]}"
         },
         {
           "code": 20222,
           "displayName": "Cash Prize",
           "prizeType": 2,
           "prizeValue": 30,
-          "designSettings": "{\"customIcon\": \"https://thumb1.shutterstock.com/display_pic_with_logo/92336/273487253/stock-vector-vector-illustration-of-roulette-wheel-273487253.jpg\",\"sectors\": [{\"sectorColor\": \"#ff0f00\", \"sectorIndex\": 2},{\"sectorColor\": \"#0fff00\", \"sectorIndex\": 4}]}"
+          "designSettings": "{\"customIcon\": \"../saw-images-assets/shared/icon-cash.png\",\"sectors\": [{\"sectorColor\": \"#ff0f00\", \"sectorIndex\": 2},{\"sectorColor\": \"#0fff00\", \"sectorIndex\": 4}]}"
         }
       ]
     }
