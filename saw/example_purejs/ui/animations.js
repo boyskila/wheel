@@ -6,9 +6,18 @@ var visibilityOptions = {
 
 var animations = {
     spinWheel: function (prize, onAnimationEnd, sectorsCount) {
-        this.mainAnimatinRef = anime({
+		var prizeSectorIndex = prize._sectors[0]._sectorIndex;
+		anime({
+			targets: '#wheel-ring',
+			rotate: 3600 + prizeSectorIndex * (360 / sectorsCount) + 360 - 10,
+			direction: 'normal',
+			elasticity: 100,
+			easing: [0.175, 0.885, 0.320, 1.075],
+			duration: 7000
+		})
+		anime({
             targets: '#circle-svg',
-            rotate: 5960 + (prize._sectors[0]._sectorIndex) * (360/sectorsCount) - 360 - 30,
+            rotate: (3600 + prizeSectorIndex * (360 / sectorsCount) + 360) - ((360 / sectorsCount)/2 - 10),
             direction: 'normal',
             elasticity: 100,
             easing: [0.175, 0.885, 0.320, 1.075],
@@ -26,9 +35,11 @@ var animations = {
                 $(".overlay, .close").click(function() {
                     $(this).css(visibilityOptions);
                 });
-				$('#click-to-spin-arrow').css('visibility', 'visible');
+                $('#click-to-spin-arrow').css('visibility', 'visible');
                 setTimeout(function() {
                     $('.overlay').css(visibilityOptions);
+					var elementsToReset = ['spin-btn'];
+					Utils.resetAnimations(elementsToReset);
                 }, 15000);
             }
         });
@@ -68,6 +79,7 @@ var animations = {
         });
         return animation;
     },
+
     blinkingFlare: function() {
         anime({
             targets: '.flare',

@@ -18,7 +18,6 @@ function LegacySaWComponents(legacySaWRender) {
                         return pools.length;
                     };
                     Sidebar = new SidebarBuilder(pools);
-
                     Sidebar.init();
                 }
             }
@@ -28,7 +27,6 @@ function LegacySaWComponents(legacySaWRender) {
 
     this.SaWSpinsDialog = function() {
         this.setSectors = function(templateCode, prizes) {
-			console.log('ZZZZZZZZZZZZZZZZz');
             new WheelBuilder(prizes);
         };
         return this;

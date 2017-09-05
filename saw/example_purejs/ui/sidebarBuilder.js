@@ -1,8 +1,14 @@
 function SidebarBuilder(pools) {
     this.init = function() {
+        var skinBorders = {
+            'wooden': '#70442c',
+            'golden': '#70442c',
+            'rainbow': '#2b2658'
+        }
         var $sidebar = $('.sidebar');
         var $wheelText = $('#wheel-text');
         $sidebar.empty();
+
         $.each(pools, function (index, pool) {
             var formatedData = Utils.formatPoolData(pool);
             $sidebar.append(`
@@ -15,11 +21,13 @@ function SidebarBuilder(pools) {
             attachPoolIconHandler(pool);
         });
 
-        $('.pool-container').first().trigger('click')
-        // animations.blinkingFlare();
+        $('.pool-container').first().trigger('click');
+        animations.blinkingFlare();
         var arrowAnimation = animations.clickToSpinArrow();
 
         $('#spin-btn').click(function () {
+			var elementsToReset = ['circle-svg', 'wheel-ring'];
+			Utils.resetAnimations(elementsToReset);
             var numberPattern = /\d+/g;
             var spinsLeft = $wheelText.find('.spins-count').text().match(numberPattern)[0];
 
@@ -29,22 +37,21 @@ function SidebarBuilder(pools) {
             if (spinsLeft - 1 == 1) {
                 $(this).css('opacity', '.9');
             }
-			$(this).css('visibility', 'hidden')
+            $(this).css('visibility', 'hidden')
             $('#circle-svg').attr('data-status', 'running')
             $('#click-to-spin-arrow').css('visibility', 'hidden');
-
+			var activePoolID = Utils.getActivePoolID();
             arrowAnimation.pause();
             animations.pulsedButton();
-            var activePoolID = Utils.getActivePoolID();
             legacySaWRender.onStartSpin(Number(activePoolID));
-            var elementsToReset = ['circle-svg', 'spin-btn'];
-            Utils.resetAnimations(elementsToReset)
         })
 
         function attachPoolIconHandler(pool) {
-            $('#pool-container-' + pool._code).click(function () {
+			var poolCode = pool._code;
+            $('#pool-container-' + poolCode).click(function () {
+				var wheelID = $('.wheel').data('pool-id');
                 // prevent re-running the wheel
-                if (Utils.isWheelRunning()) {
+                if (Utils.isWheelRunning() || poolCode == wheelID) {
                     return;
                 }
                 //remove currently selected wheel flag
@@ -52,32 +59,30 @@ function SidebarBuilder(pools) {
                     $(data).attr('data', '')
                 });
                 //attach clicked pool code as flag that is selected
-                $(this).attr('data', pool._code);
-
+                $(this).attr('data', poolCode);
+				$('.wheel').attr('data-pool-id', poolCode)
                 formattedData = Utils.formatPoolData(pool);
-				if (formattedData.rewardsTicketCount) {
-					$('#spin-btn').css('visibility', 'visible');
-				} else {
-					$('#spin-btn').css('visibility', 'hidden');
-				}
+				$('#spin-btn').css('visibility', function() {
+					return formattedData.rewardsTicketCount ? 'visible' : 'hidden'
+				});
+
                 $('#wheel-text .spins-count').text(formattedData.formatFreeSpins);
                 $('#wheel-text .date').text(formattedData.formatExpirationDate);
-				var skinName = pool._skinName;
-				$('.arrow-container').empty().append(
-					`<img id="click-to-spin-arrow" src="../saw-images-assets/${skinName}/${skinName}-arrow.png"></img>`
-				)
-				animations.clickToSpinArrow();
-				$('.pointer-container').empty().append(
-					`<img src="../saw-images-assets/${skinName}/${skinName}-tick.png"></img>`
-				)
-				$('#wheel-ring').empty().append(
-					`<img src="../saw-images-assets/${skinName}/${skinName}-wheel.png"></img>`
-				)
-                $('#bg-image').attr({
-                    'src': `../saw-images-assets/${skinName}/${skinName}-bg.jpg`
-                }).css('position', 'absolute');
+                var skinName = pool._skinName;
+				var pathToImage = `../saw-images-assets/${skinName}/${skinName}-`;
 
-                legacySaWRender.onOpenPool(pool._code);
+                $('.arrow-container img').attr('src', pathToImage + 'arrow.png')
+                animations.clickToSpinArrow();
+
+                $('.pointer-container img').attr('src', pathToImage + 'tick.png')
+                $('#wheel-ring').css('background', 'url(' + pathToImage + 'wheel.png)')
+                $('.wrapper').css({
+                    'background-image': 'url(' + pathToImage + 'bg.jpg)',
+                    'border': `18px solid ${skinBorders[skinName]}`,
+					'border-image': `url(../saw-images-assets/round-light.png)`
+                });
+
+                legacySaWRender.onOpenPool(poolCode);
             });
         }
     }
@@ -87,9 +92,9 @@ SidebarBuilder.prototype.updateCurrentActivePool = function(pools, activePoolID)
     var $wheelText = $('#wheel-text');
     var pool = Utils.getPoolById(pools, activePoolID);
     var formattedData = Utils.formatPoolData(pool);
-	if (formattedData.rewardsTicketCount) {
-		$('#spin-btn').css('visibility', 'visible');
-	}
+    if (formattedData.rewardsTicketCount) {
+        $('#spin-btn').css('visibility', 'visible');
+    }
     var $poolContainer = $('#pool-container-' + activePoolID);
     $poolContainer.find('.spins-count').text(formattedData.rewardsTicketCount + ' spins');
     $wheelText.find('.spins-count').text(formattedData.formatFreeSpins);

@@ -30,7 +30,6 @@ function LegacySaWRender() {
 
     this.onOpenPool = function (templateCode) {
         logger.info("Open pool info for: " + templateCode);
-		console.log('loloolooll');
         saWSpinsDialog.setSectors(templateCode, randomRewardEngine.getSaWSectorPrizes(templateCode));
     }
 
